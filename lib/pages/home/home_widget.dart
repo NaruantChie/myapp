@@ -32,10 +32,14 @@ class _HomeWidgetState extends State<HomeWidget> {
   double qrOpacity = 0.0;
   bool _isCollapsed = false; // สถานะการย่อของแผ่น
   bool _isAnimating = false; // สถานะของการเปลี่ยนแปลงความโปร่งใส
-
+  int _counter = 0;
   static const minSize = 0.2;
   static const maxSize = 0.75;
-
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
   @override
   void initState() {
     super.initState();
@@ -189,8 +193,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(0.0),
-                                    child: Image.network(
-                                      'https://picsum.photos/seed/810/600',
+                                    child: Image.asset(
+                                      'assets/images/image1.jpg',
                                       width: 37.0,
                                       height: 37.0,
                                       fit: BoxFit.cover,

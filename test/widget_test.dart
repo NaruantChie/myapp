@@ -1,17 +1,44 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:appau2/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    int counter = 0;
+
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: StatefulBuilder(
+            builder: (context, setState) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('$counter', key: Key('counterText')),
+                  IconButton(
+                    icon: Icon(Icons.add_circle_outline),
+                    onPressed: () {
+                      setState(() {
+                        counter++;
+                      });
+                    },
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    ));
+
+    // ตรวจสอบว่า counter เริ่มต้นที่ 0
+    expect(find.byKey(const Key('counterText')), findsOneWidget);
+    expect(find.text('0'), findsOneWidget);
+
+    // กดปุ่ม '+' และทริกเกอร์เฟรมอีกครั้ง
+    await tester.tap(find.byIcon(Icons.add_circle_outline));
+    await tester.pumpAndSettle();
+
+    // ตรวจสอบว่า counter เพิ่มเป็น 1
+    expect(find.text('1'), findsOneWidget);
   });
 }

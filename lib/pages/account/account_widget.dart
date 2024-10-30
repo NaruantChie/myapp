@@ -83,23 +83,19 @@ class _AccountWidgetState extends State<AccountWidget> {
                                 topRight: Radius.circular(18.0),
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child: CachedNetworkImage(
-                                  fadeInDuration:
-                                      const Duration(milliseconds: 500),
-                                  fadeOutDuration:
-                                      const Duration(milliseconds: 500),
-                                  imageUrl:
-                                      'https://picsum.photos/seed/641/600',
-                                  width: 40.0,
-                                  height: 40.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
+                         child: Padding(
+  padding: const EdgeInsets.all(8.0),
+  child: ClipRRect(
+    borderRadius: BorderRadius.circular(10.0),
+    child: Image.asset(
+      'assets/images/image1.jpg', // เปลี่ยนเป็นเส้นทางของรูปใน assets ของคุณ
+      width: 40.0,
+      height: 40.0,
+      fit: BoxFit.cover,
+    ),
+  ),
+),
+
                           ),
                           const Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(

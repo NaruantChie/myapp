@@ -35,8 +35,8 @@ class QrReceivePage extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Image.network(
-                'https://cdn.pixabay.com/photo/2013/07/12/14/45/qr-code-148732_1280.png', // ใช้ภาพ QR code จำลอง
+              child: Image.asset(
+                 'assets/images/qrcode.png', // ใช้ภาพ QR code จำลอง
                 width: 400,
                 height: 400,
                 fit: BoxFit.contain,
